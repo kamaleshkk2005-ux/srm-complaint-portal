@@ -32,8 +32,8 @@ services:
       - key: ADMIN_INITIAL_PASSWORD
         sync: false
 
-  - type: psql
-    name: college-complaint-db
+databases:
+  - name: college-complaint-db
     databaseName: complaint_db
     user: db_user
     plan: free
