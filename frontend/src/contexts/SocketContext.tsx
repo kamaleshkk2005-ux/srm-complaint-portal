@@ -18,29 +18,8 @@ export const SocketProvider: React.FC<{ children: React.ReactNode }> = ({ childr
     let socketInstance: Socket | null = null;
 
     if (isAuthenticated) {
-      const token = localStorage.getItem('accessToken');
-      const socketUrl = import.meta.env.VITE_SOCKET_URL || 'http://localhost:5000';
-
-      socketInstance = io(socketUrl, {
-        auth: { token },
-        transports: ['websocket'], // Use websocket for better stability
-      });
-
-      socketInstance.on('connect', () => {
-        setIsConnected(true);
-        console.log('Socket.io connected:', socketInstance?.id);
-      });
-
-      socketInstance.on('disconnect', () => {
-        setIsConnected(false);
-        console.log('Socket.io disconnected');
-      });
-
-      socketInstance.on('connect_error', (err) => {
-        console.error('Socket connection error:', err.message);
-      });
-
-      setSocket(socketInstance);
+      // Sockets disabled for Vercel Serverless environment
+      console.log('Socket.io disabled in this environment.');
     } else {
       // Disconnect if user logs out
       if (socket) {

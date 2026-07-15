@@ -9,8 +9,8 @@ const PORT = process.env.PORT || 5000;
 // Create HTTP Server
 const server = http.createServer(app);
 
-// Initialize Socket.io
-initSocket(server);
+// Initialize Socket.io (Disabled for Vercel Serverless)
+// initSocket(server);
 
 // Start server
 const startServer = async () => {
